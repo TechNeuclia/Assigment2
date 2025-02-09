@@ -92,7 +92,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        <x:Double x:Key="StateContainerWidth">1035.4</x:Double>
+        <x:Double x:Key="StateContainerWidth">1065.4</x:Double>
         <x:Double x:Key="StateContainerHeight">600</x:Double>
         <av:Point x:Key="ShapeLocation">565,35</av:Point>
         <av:PointCollection x:Key="ConnectorLocation">614.6,59.8 767.28,59.8 767.28,120</av:PointCollection>
@@ -124,34 +124,6 @@
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[&quot;going to next stage from init&quot;]" />
       </State.Exit>
       <State.Transitions>
-        <Transition DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="448.8,522.4" sap2010:WorkflowViewState.IdRef="Transition_18">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:PointCollection x:Key="ConnectorLocation">685,147 444.84000000000003,147 444.84000000000003,280</av:PointCollection>
-              <x:Int32 x:Key="SrcConnectionPointIndex">33</x:Int32>
-              <x:Int32 x:Key="DestConnectionPointIndex">30</x:Int32>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Transition.To>
-            <State x:Name="__ReferenceID0" DisplayName="Final State" sap:VirtualizedContainerService.HintSize="149.6,60" sap2010:WorkflowViewState.IdRef="State_17" IsFinal="True">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">385,280</av:Point>
-                  <av:Size x:Key="ShapeSize">149.6,60</av:Size>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  <x:Double x:Key="StateContainerWidth">138</x:Double>
-                  <x:Double x:Key="StateContainerHeight">29</x:Double>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </State>
-          </Transition.To>
-          <Transition.Action>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;No files to process&quot;]" />
-          </Transition.Action>
-          <Transition.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="MacroFileExistFlag=False or DataFileExistFlag=False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
-          </Transition.Condition>
-        </Transition>
         <Transition DisplayName="File exist" sap:VirtualizedContainerService.HintSize="450.4,522.4" sap2010:WorkflowViewState.IdRef="Transition_22">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -163,12 +135,14 @@
           <Transition.To>
             <State x:Name="__ReferenceID1" DisplayName="Get transition" sap:VirtualizedContainerService.HintSize="149.6,60" sap2010:WorkflowViewState.IdRef="State_15">
               <State.Entry>
-                <Sequence sap:VirtualizedContainerService.HintSize="416,291.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence sap:VirtualizedContainerService.HintSize="416,665.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="Input" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="382.4,187.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="D:\2.Training Content\2.UiPathTraining\Assignments\BankPaymentModeUpdater\Data.xlsx" />
+                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="Input" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="382.4,187.2" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="D:\2.Training Content\2.UiPathTraining\Assignments\BankPaymentModeUpdater\MacroSheet.xlsx" />
                   <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[DataDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="382.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Input\Data.xlsx" />
                   <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[MacroDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="382.4,111.2" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Success" WorkbookPath="Input\MacroSheet.xlsx" />
                 </Sequence>
@@ -182,11 +156,11 @@
                   <x:Double x:Key="StateContainerHeight">29</x:Double>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
+              <State.Exit>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;get transation state finished&quot;]" />
+              </State.Exit>
               <State.Transitions>
-                <Transition DisplayName="no data" sap:VirtualizedContainerService.HintSize="460.8,604.8" sap2010:WorkflowViewState.IdRef="Transition_19">
-                  <Transition.Trigger>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;No data to process&quot;]" />
-                  </Transition.Trigger>
+                <Transition DisplayName="no data" sap:VirtualizedContainerService.HintSize="516,780" sap2010:WorkflowViewState.IdRef="Transition_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:PointCollection x:Key="ConnectorLocation">695,320 665,320 665,313 534.6,313</av:PointCollection>
@@ -195,14 +169,30 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.To>
-                    <x:Reference>__ReferenceID0</x:Reference>
+                    <State x:Name="__ReferenceID0" DisplayName="Final State" sap:VirtualizedContainerService.HintSize="149.6,60" sap2010:WorkflowViewState.IdRef="State_17" IsFinal="True">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">385,280</av:Point>
+                          <av:Size x:Key="ShapeSize">149.6,60</av:Size>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Double x:Key="StateContainerWidth">138</x:Double>
+                          <x:Double x:Key="StateContainerHeight">29</x:Double>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </State>
                   </Transition.To>
                   <Transition.Action>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Going for Final&quot;]" />
+                    <Sequence sap:VirtualizedContainerService.HintSize="416,400" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;No data to process&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Going for Final&quot;]" />
+                    </Sequence>
                   </Transition.Action>
-                  <Transition.Condition>
-                    <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="(DataDT.Rows.Count&lt;=0) OR (MacroDT.Rows.Count&lt;=0)" />
-                  </Transition.Condition>
+                  <Transition.Condition>[(DataDT.Rows.Count&lt;=0) OR (MacroDT.Rows.Count&lt;=0)]</Transition.Condition>
                 </Transition>
                 <Transition DisplayName="has data" sap:VirtualizedContainerService.HintSize="448.8,604.8" sap2010:WorkflowViewState.IdRef="Transition_21">
                   <Transition.Trigger>
@@ -217,6 +207,14 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.To>
                     <State x:Name="__ReferenceID2" DisplayName="Process" sap:VirtualizedContainerService.HintSize="149.6,60" sap2010:WorkflowViewState.IdRef="State_16">
+                      <State.Entry>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process - Invoke Workflow File (Process.xaml)" sap:VirtualizedContainerService.HintSize="334.4,174.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_dataDT">[DataDT]</InOutArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MacroDT">[MacroDT]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </State.Entry>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">695,430</av:Point>
@@ -226,8 +224,18 @@
                           <x:Double x:Key="StateContainerHeight">29</x:Double>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <State.Exit>
+                        <Sequence sap:VirtualizedContainerService.HintSize="416,199.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[DataDT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="Input\Data.xlsx" />
+                        </Sequence>
+                      </State.Exit>
                       <State.Transitions>
-                        <Transition DisplayName="Success" sap2010:WorkflowViewState.IdRef="Transition_20">
+                        <Transition DisplayName="Success" sap:VirtualizedContainerService.HintSize="448.8,522.4" sap2010:WorkflowViewState.IdRef="Transition_20">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:PointCollection x:Key="ConnectorLocation">695,460 452.32,460 452.32,340</av:PointCollection>
@@ -238,6 +246,9 @@
                           <Transition.To>
                             <x:Reference>__ReferenceID0</x:Reference>
                           </Transition.To>
+                          <Transition.Action>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Successful transition&quot;]" />
+                          </Transition.Action>
                         </Transition>
                       </State.Transitions>
                     </State>
@@ -257,6 +268,24 @@
           </Transition.Action>
           <Transition.Condition>
             <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="MacroFileExistFlag = True and DataFileExistFlag = True" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_4" />
+          </Transition.Condition>
+        </Transition>
+        <Transition DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="448.8,522.4" sap2010:WorkflowViewState.IdRef="Transition_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:PointCollection x:Key="ConnectorLocation">685,147 467.28,147 467.28,280</av:PointCollection>
+              <x:Int32 x:Key="SrcConnectionPointIndex">33</x:Int32>
+              <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Transition.To>
+            <x:Reference>__ReferenceID0</x:Reference>
+          </Transition.To>
+          <Transition.Action>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;No files to process&quot;]" />
+          </Transition.Action>
+          <Transition.Condition>
+            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="MacroFileExistFlag=False or DataFileExistFlag=False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
           </Transition.Condition>
         </Transition>
       </State.Transitions>
